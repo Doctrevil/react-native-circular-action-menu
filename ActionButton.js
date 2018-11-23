@@ -33,6 +33,7 @@ const alignMap = {
     startDegree: 180,
     endDegree: 270,
   },
+  
 };
 
 export default class ActionButton extends Component {
@@ -56,7 +57,8 @@ export default class ActionButton extends Component {
   }
 
   getActionContainerStyle() {
-    const {alignItems, justifyContent} = alignMap[this.props.position];
+    const alignItems = this.props.alignItems || alignMap[this.props.position].alignItems;
+    const justifyContent = this.props.justifyContent || alignMap[this.props.position].justifyContent;
     return [styles.overlay, styles.actionContainer, {
       alignItems,
       justifyContent,
@@ -269,6 +271,8 @@ ActionButton.propTypes = {
     PropTypes.bool,
     PropTypes.object,
   ]),
+  alignItems: PropTypes.string,
+  justifyContent: PropTypes.string,
   startDegree: PropTypes.number,
   endDegree: PropTypes.number,
   radius: PropTypes.number,
