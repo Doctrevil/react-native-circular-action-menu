@@ -57,11 +57,13 @@ export default class ActionButton extends Component {
   }
 
   getActionContainerStyle() {
+    const marginTop = this.props.marginTop || 0; 
     const alignItems = this.props.alignItems || alignMap[this.props.position].alignItems;
     const justifyContent = this.props.justifyContent || alignMap[this.props.position].justifyContent;
     return [styles.overlay, styles.actionContainer, {
       alignItems,
       justifyContent,
+      marginTop
     }];
   }
   getActionsStyle() {
@@ -278,6 +280,7 @@ ActionButton.propTypes = {
   radius: PropTypes.number,
   children: PropTypes.node,
   position: PropTypes.oneOf(['left', 'center', 'right']),
+  marginTop: PropTypes.number,
 };
 
 ActionButton.defaultProps = {
